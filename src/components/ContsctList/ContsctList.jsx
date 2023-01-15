@@ -1,10 +1,10 @@
 import {List, ListItem} from './ContsctList.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/ContactsSlice';
+import { deleteContact } from 'redux/Operations';
 
 export const ContactList = () => {
     const dispatch = useDispatch();
-    const contacts = useSelector(state => state.contacts.contacts);
+    const contacts = useSelector(state => state.contacts.items);
     const filter = useSelector(state => state.filter);
 
     const getVisibleContacts = () => {
@@ -14,7 +14,7 @@ export const ContactList = () => {
         contact.name.toLowerCase().includes(normalizedFilter)
         );
     };
-
+    
     const deleteContactById = contactId => {
         dispatch(deleteContact(contactId));
     };
